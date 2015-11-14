@@ -20,7 +20,49 @@ struct student {
 	char *name;
 	int score;
 };
-
-struct student ** topKStudents(struct student *students, int len, int K) {
-	return NULL;
+struct student * swap(struct student *students, int a, int b)
+{
+	struct student temp;
+	temp = students[a];
+	students[a] = students[b];
+	students[b] = temp;
+	return students;
 }
+struct student * removeRemainingElements(struct student *students, int k)
+{
+	int i = 0;
+//	int k;
+	struct student temp[10];
+	for (i = 0; i < k; i++)
+		temp[i] = students[i];
+	students = temp;
+	return students;
+}
+
+struct student ** topKStudents(struct student *students, int len, int K)
+{
+	int i = 0;
+	int k;
+	struct student **result = (student **)malloc(K * sizeof(student *));
+	*result = (student *)malloc(sizeof(student));
+
+	if ((K < 1) || (K > len))
+		return NULL;
+	else
+	{
+		int i, j;
+		for (i = 0; i < len; i++)
+		{
+			for (j = 0; j < len; j++)
+			{
+				if (students[i].score>students[j].score)
+				{
+					swap(students, i, j);
+				}
+			}
+		}
+		students = removeRemainingElements(students, k);
+		return &students;
+	}
+}
+	

@@ -15,5 +15,27 @@ NOTES:
 
 void * sortedArrayPositionsChange(int *Arr, int len)
 {
+	/*int temp, i, j;
+		// Travers the given array from rightmost side
+		for (i = len - 1; i > 0; i--)
+		{
+			// Check if arr[i] is not in order
+			if (Arr[i] < Arr[i - 1])
+			{
+				// Find the other element to be
+				// swapped with arr[i]
+				 j = i - 1;
+				while (j >= 0 && Arr[i] < Arr[j])
+					j--;
+
+				// Swap the pair
+				//swap(arr[i], arr[j + 1]);
+				temp = Arr[j];
+				Arr[j] = Arr[j + 1];
+				Arr[j + 1] = temp;
+				break;
+			}
+		}
+	}*/
 	return NULL;
 }
