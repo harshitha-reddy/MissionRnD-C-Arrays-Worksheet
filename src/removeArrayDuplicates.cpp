@@ -15,20 +15,20 @@ NOTES: Don't create new array, try to change the input array.
 
 void * removeArrayDuplicates(int *Arr, int len)
 {
-	int i, j;
-	for (i = 0; i < len; i++)
+	if ((Arr == NULL) || (len <= 0))
+		return NULL;
+	int lv1 = 0, lv2 = 0, lv3 = 0;
+	for (lv1 = 0; lv1<len - 1; lv1++)
 	{
-		for (j = 0; j < len; j++)
+		for (lv2 = lv1 + 1; lv2<len; lv2++)
 		{
-			if (Arr[i] == Arr[j])
+			if (Arr[lv1] == Arr[lv2])
 			{
-			
-				printf("dupliate element exists: %d", Arr[i]);
+				for (lv3 = lv2; lv3<len - 1; lv3++)
+					Arr[lv3] = Arr[lv3 + 1];
+				len--;
+				lv2--;
 			}
-		else
-				return NULL;
 		}
 	}
-	
-	//return NULL;
 }

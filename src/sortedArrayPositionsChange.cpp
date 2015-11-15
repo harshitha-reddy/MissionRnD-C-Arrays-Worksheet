@@ -15,27 +15,21 @@ NOTES:
 
 void * sortedArrayPositionsChange(int *Arr, int len)
 {
-	/*int temp, i, j;
-		// Travers the given array from rightmost side
-		for (i = len - 1; i > 0; i--)
+	int i, temp, j;
+	if ((Arr == 0) || (len <= 0))
+		return NULL;
+	for (i = 0; i<len; i++)
+	{
+		for (j = i; j<len; j++)
 		{
-			// Check if arr[i] is not in order
-			if (Arr[i] < Arr[i - 1])
+			if (Arr[i]>Arr[j])
 			{
-				// Find the other element to be
-				// swapped with arr[i]
-				 j = i - 1;
-				while (j >= 0 && Arr[i] < Arr[j])
-					j--;
-
-				// Swap the pair
-				//swap(arr[i], arr[j + 1]);
-				temp = Arr[j];
-				Arr[j] = Arr[j + 1];
-				Arr[j + 1] = temp;
-				break;
+				temp = Arr[i];
+				Arr[i] = Arr[j];
+				Arr[j] = temp;
 			}
 		}
-	}*/
-	return NULL;
+	}
+	for (i = 0; i < len; i++)
+		printf("%d", Arr[i]);
 }

@@ -22,35 +22,41 @@ struct student {
 };
 struct student * swap(struct student *students, int a, int b)
 {
+
 	struct student temp;
 	temp = students[a];
 	students[a] = students[b];
 	students[b] = temp;
 	return students;
 }
-struct student * removeRemainingElements(struct student *students, int k)
+void removeRemainingElements(struct student *students, int k)
 {
 	int i = 0;
-//	int k;
 	struct student temp[10];
 	for (i = 0; i < k; i++)
+	{
 		temp[i] = students[i];
+
+	}
 	students = temp;
-	return students;
+	for (i = 0; i<k; i++)
+		printf("\n%d- %s", students[i].score, students[i].name);
+
+
 }
 
 struct student ** topKStudents(struct student *students, int len, int K)
 {
-	int i = 0;
-	int k;
-	struct student **result = (student **)malloc(K * sizeof(student *));
-	*result = (student *)malloc(sizeof(student));
+	int i, j;
+	struct student **result = (struct student **)malloc(K * sizeof(struct student *));
+	for (i = 0; i < K; i++)
+		result[i] = (struct student *)malloc(sizeof(struct student));
 
 	if ((K < 1) || (K > len))
 		return NULL;
 	else
 	{
-		int i, j;
+
 		for (i = 0; i < len; i++)
 		{
 			for (j = 0; j < len; j++)
@@ -61,8 +67,17 @@ struct student ** topKStudents(struct student *students, int len, int K)
 				}
 			}
 		}
-		students = removeRemainingElements(students, k);
-		return &students;
+		removeRemainingElements(students, K);
+		//printf("\n*****AFTER REMOVING*******\n");
+		for (i = 0; i<K; i++)
+		{
+
+			result[i]->score = students[i].score;
+			result[i]->name = students[i].name;
+		}
+		for (i = 0; i<K; i++)
+			//printf("\n%d ", result[i]->score);
+		return result;
 	}
 }
-	
+
